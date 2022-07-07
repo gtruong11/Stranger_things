@@ -8,11 +8,14 @@ import {
 import{
     App,
     Header,
+    Register,
 } from "./components"
 
 const root = ReactDOM.createRoot(document.getElementById('app'))
 root.render(
     <BrowserRouter>
     <Header/>
+    <Register/>
+    
       <App />
     </BrowserRouter>)

@@ -1,25 +1,26 @@
-import React { useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client"
 
-const Register = (props) => {
-    const setIsLoggedIn = props.setIsLoggedIn;
-    const setIsLoading = props.setIsLoading;
-  
+const Register = () => {
+   
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
   
     return (
-<form onSubmit={(event) =>{
+
+<form id= "register"
+onSubmit={ async (event) =>{
     event.preventDefault();
     console.log('i am submitting');
     setUsername('');
     setPassword('');
 }}>
-    <label>Register New User
+    <label>
+        Register New User
         <input name='username' type="text" value={username} onChange={(event)=>{
             setUsername(event.target.value)
-            console.log(even.target.value)
+            console.log(event.target.value)
         }}/>
     </label>
 
@@ -38,3 +39,4 @@ const Register = (props) => {
 
 </form>
     )}
+export default Register
