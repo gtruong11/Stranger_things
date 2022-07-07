@@ -1,7 +1,15 @@
 import React { useState } from "react";
 import ReactDOM from "react-dom/client"
 
-
+const Register = (props) => {
+    const setIsLoggedIn = props.setIsLoggedIn;
+    const setIsLoading = props.setIsLoading;
+  
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirm, setConfirm] = useState("");
+  
+    return (
 <form onSubmit={(event) =>{
     event.preventDefault();
     console.log('i am submitting');
@@ -29,3 +37,4 @@ import ReactDOM from "react-dom/client"
     <button type="submit">Submit</button>
 
 </form>
+    )}
