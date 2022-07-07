@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client"
+import { registerPerson } from '../api'
 
 const Register = () => {
    
@@ -7,25 +8,27 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
   
-    return (
-
-<form id= "register"
-onSubmit={ async (event) =>{
+const handleSubmit = (event) => {
     event.preventDefault();
     console.log('i am submitting');
-    setUsername('');
-    setPassword('');
-}}>
+        registerPerson(username, password);
+    }
+
+return (
+<form id= "register" onSubmit={handleSubmit}>
+    <div>
+        <fieldset>
     <label>
         Register New User
         <input name='username' type="text" value={username} onChange={(event)=>{
             setUsername(event.target.value)
-            console.log(event.target.value)
+            console.log(username)
         }}/>
     </label>
-
+    </fieldset>
+    <fieldset>
     <label>
-        Password
+        Password 
         <input
         name='password'
         type='text'
@@ -34,7 +37,8 @@ onSubmit={ async (event) =>{
             setPassword(event.target.value)
         }}/>
     </label>
-
+    </fieldset>
+    </div>
     <button type="submit">Submit</button>
 
 </form>
