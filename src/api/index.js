@@ -23,15 +23,15 @@ async function registerPerson(event){
         )
     }
 
-   export async function getAllPosts() {
+export async function getAllPosts() {
         try {
             const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`)
             const result = await response.json()
             const posts = result.data.posts
-            console.log(posts)
+            return posts
         }
         catch (error) {
             console.error(error);
-        }
-    }
+       }
+}
 
