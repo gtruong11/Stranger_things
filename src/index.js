@@ -6,11 +6,13 @@ import {
     Route,
 } from 'react-router-dom'
 import{
-    App
+    App,
+    Header,
 } from "./components"
 
 const root = ReactDOM.createRoot(document.getElementById('app'))
 root.render(
     <BrowserRouter>
+    <Header/>
       <App />
     </BrowserRouter>)

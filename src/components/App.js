@@ -11,10 +11,10 @@ import {
 
 // This would be in your component File
 async function handleSubmit(event) {
-    event.preventDefault(
+    event.preventDefault()
         console.log("this is your event")
         const backFromAPI = awaitregisterPerson(event)
-    )
+    
 }
 
 
@@ -39,15 +39,19 @@ const App= ()=>{
             setAllPosts(posts)
         })   
     }, [])
-    const displayPosts = allPosts.map((element, idx)=>
+    const displayPosts = allPosts.map((posts, index)=>{
         return(
-        <><h1>element.title</h1><h2>element.body</h2></>
-    )
+            
+            <div posts={posts} key={index}>
+<h2>{posts.title}</h2>
+<h3>{posts.description}</h3>
 
-
-return(<h1>App Component
+            </div>
+    )})
+    return(<h1> {displayPosts}
         <button onClick={getAllPosts}>Push Me</button>
+       
     </h1>)
    
 }
-export default App
+export default App;
