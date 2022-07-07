@@ -44,7 +44,47 @@ export async function getAllPosts() {
 
        }
 }
+export async function loginUser(registerUsername, registerPassword){
+  try{ 
+    console.log(registerUsername, registerPassword)
+    const response = await 
+        fetch(`${BASE_URL}${COHORT_NAME}/users/register`,
+        {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({
+            user: {
+              username: registerUsername,
+              password: registerPassword
+            }
+          })
+        }
+        )
+        const result = await response.json();
 
+        return result.data.token
+    } catch (error){
+      throw error
+    }
+}
+export async function getUserInfo(){
+
+  try { 
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`)
+    const result = await response.json()
+    const token = result.data.token
+      headers: {
+        "Content-Type": "application/JSON",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 
 // export async function Authentication (){
   
