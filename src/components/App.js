@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link, Routes } from "react-router-dom";
 import { getAllPosts } from "../api";
-import { Header, Register, Login, Home, Search, PostPage } from "./";
+import { Header, Register, Login, Home, Search, PostPage, Profile, Userbar } from "./";
 import "./App.css"
 
 
@@ -27,14 +27,19 @@ const g */
 }
 
 const App = () => {
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+
   return (
     <div>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} />
+     
       <Routes>
+        <Route path="/" element={<PostPage />}/>
         <Route path="/posts" element={<PostPage />}/>
-        <Route path="/login" element={<Login />}/>
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path="/register" element={<Register />}/>
+        <Route path="/profile" element={<Profile />}/>
         {/* <Route path='/home" */}
       </Routes>
 

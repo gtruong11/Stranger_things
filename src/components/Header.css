@@ -11,12 +11,27 @@
     background-color: #36454F;
     text-transform: uppercase;
     align-items: baseline;
-    gap: 10px;
-    
+    gap: 10px;    
 
 }
 
+a:link {
+    color: white;
+    text-decoration: none
+}
+
+a:visited {
+    color: white;
+    text-decoration: none
+}
+
+
 #navbar {
     display: flex;
-    column-gap: 5px;
+    column-gap: 10px;
+}
+
+div.userbar {
+    background-color: black;
+    color: antiquewhite;
 }
