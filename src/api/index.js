@@ -39,6 +39,7 @@ export async function getAllPosts() {
     console.error(error);
   }
 }
+<<<<<<< Updated upstream
 export async function loginUser(registerUsername, registerPassword) {
   try {
     console.log(registerUsername, registerPassword);
@@ -56,10 +57,42 @@ export async function loginUser(registerUsername, registerPassword) {
     });
     const result = await response.json();
 
+=======
+<<<<<<< HEAD
+
+export async function loginUser(Username, Password){
+  try{ 
+    console.log(Username, Password)
+    const response = await 
+        fetch(`${BASE_URL}${COHORT_NAME}/users/login`,
+        {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+=======
+export async function loginUser(registerUsername, registerPassword) {
+  try {
+    console.log(registerUsername, registerPassword);
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: registerUsername,
+          password: registerPassword,
+        },
+      }),
+    });
+    const result = await response.json();
+
+>>>>>>> Stashed changes
     return result.data.token;
   } catch (error) {
     throw error;
   }
+<<<<<<< Updated upstream
 }
 export async function getUserInfo() {
   try {
@@ -69,6 +102,149 @@ export async function getUserInfo() {
         Authorization: `Bearer ${token}`,
       },
     });
+=======
+}
+export async function getUserInfo() {
+  try {
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`, {
+      headers: {
+        "Content-Type": "application/JSON",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const result = await response.json();
+    const token = result.data.token;
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function makeMessage(postID, content) {
+    try {
+        const response = await fetch(`${BASE_URL}/posts/${postID}/messages`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+>>>>>>> ff4c90728be0fac142d53f538cd7ba05308adb10
+          },
+          body: JSON.stringify({
+            message: {
+              content,
+            },
+          }),
+        });
+        const {
+          message: { content: newMessage },
+        } = await response.json();
+        return newMessage();
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+//
+
+export async function editPost(
+  title,
+  description,
+  price,
+  location,
+  willDeliver,
+  POST_ID
+) {
+  const token = getToken();
+
+  try {
+    const response = await fetch(`${BASE_URL}/users/me`, 
+      {
+        post: {
+          title,
+          description,
+          price,
+          location,
+          willDeliver,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/JSON",
+          "Authorization": `Bearer ${token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    const token = result.data.token;
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+<<<<<<< HEAD
+export async function getUserInfo(token){
+  try { 
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`, {
+=======
+
+
+export const deletePost = async (token, postID) => {
+  try {
+    await fetch(`${BASE_URL}/posts/${postID}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+export const addNewPost = async (
+    title,
+    description,
+    price,
+    location,
+    willDeliver,
+    POST_ID,
+    token
+  ) => {
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        post,
+        title,
+    description,
+    price,
+    location,
+    willDeliver,
+    POST_ID
+      }),
+    });
+    const {
+      data: { post: freshPost },
+    } = await response.json();
+    return freshPost;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+// export async function getUserInfo(){
+>>>>>>> ff4c90728be0fac142d53f538cd7ba05308adb10
+>>>>>>> Stashed changes
 
     const result = await response.json();
     const token = result.data.token;
