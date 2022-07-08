@@ -7,10 +7,9 @@ const Header = ()=>{
         <div id="header">
            <h1> Strangers' Things</h1>
            <div id="navbar">
-                {/* <Link to="/posts"> POSTS </Link> */}
-                <button>Posts</button>
-               <button >Log In</button>
-                <button >Register</button>
+                <Link to="/posts"> POSTS </Link>
+                <Link to="/login"> LOGIN </Link>
+                <Link to="/Register"> REGISTER</Link>
            </div>
            
            
