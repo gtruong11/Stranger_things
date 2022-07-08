@@ -23,7 +23,6 @@ export async function registerPerson(registerUsername, registerPassword){
         }
         )
         const result = await response.json();
-
         return result.data.token
     } catch (error){
       throw error
@@ -44,11 +43,11 @@ export async function getAllPosts() {
 
        }
 }
-export async function loginUser(registerUsername, registerPassword){
+export async function loginUser(Username, Password){
   try{ 
-    console.log(registerUsername, registerPassword)
+    console.log(Username, Password)
     const response = await 
-        fetch(`${BASE_URL}${COHORT_NAME}/users/register`,
+        fetch(`${BASE_URL}${COHORT_NAME}/users/login`,
         {
         method: "POST",
         headers: {
@@ -56,8 +55,8 @@ export async function loginUser(registerUsername, registerPassword){
           },
         body: JSON.stringify({
             user: {
-              username: registerUsername,
-              password: registerPassword
+              username: Username,
+              password: Password
             }
           })
         }
@@ -69,22 +68,22 @@ export async function loginUser(registerUsername, registerPassword){
       throw error
     }
 }
-export async function getUserInfo(){
+// export async function getUserInfo(){
 
-  try { 
-    const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`)
-    const result = await response.json()
-    const token = result.data.token
-      headers: {
-        "Content-Type": "application/JSON",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
+//   try { 
+//     const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`)
+//     const result = await response.json()
+//     const token = result.data.token
+//       headers: {
+//         "Content-Type": "application/JSON",
+//         Authorization: `Bearer ${token}`,
+//       }
+    
+//     return data;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 
 // export async function Authentication (){
   

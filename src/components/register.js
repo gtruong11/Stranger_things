@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { registerPerson } from "../api";
+import "./Register.css"
 
 const Register = () => {
   const [username, setUsername] = useState("");
