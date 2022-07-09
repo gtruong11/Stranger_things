@@ -40,23 +40,23 @@ export async function getAllPosts() {
   }
 }
 
-export async function loginUser(registerUsername, registerPassword) {
+export async function loginUser(Username, Password) {
   try {
-    console.log(registerUsername, registerPassword);
+    console.log(Username, Password);
     const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/login`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         user: {
-          username: registerUsername,
-          password: registerPassword,
-        },
-      }),
-    });
+          username: Username,
+          password: Password
+        }
+      })
+    })
     const result = await response.json();
-    return result
+    return result.data.token
   } catch(error) {
     throw error
   }
@@ -201,9 +201,10 @@ export async function makeMessage(postID, content) {
       } catch (error) {
         console.error(error);
       }
-    };
+};
 
-    export async function getUserInfo(token){
+
+export async function getUserInfo(token){
       try { 
         const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`, {
     
